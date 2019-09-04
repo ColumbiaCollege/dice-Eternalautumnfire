@@ -4,25 +4,17 @@
 //sets an integer array from 1-6
 int[] Dice = {1, 2, 3, 4, 5, 6};
 
-//sets up the sketch window with centered text, instructions, and a set framerate
+//sets up the sketch window with centered text and a set framerate
 void setup() {
   background(255);
   size(900, 900);
   textAlign(CENTER, CENTER);
   fill(0);
-  textSize(20);
-  text("Click left mouse button to roll die", width/2, height/2);
-  textSize(40);
-  frameRate(5);
+  //text("Hold left mouse button to roll die", width/2, height/2);
+  frameRate(12);
 }
 //utilizes the draw function to open the sketch window
 void draw() {
-  //stroke(0);
-  //fill(255);
-  //rect(300, 300, 300, 300);
-}
-//executes the die roll
-void mouseClicked() {
   //sets background to white
   background(255);
   //sets stroke color to black
@@ -33,6 +25,20 @@ void mouseClicked() {
   rect(300, 300, 300, 300);
   //sets fill to black
   fill(0);
+  //instructions for how to use program
+  text("Hold left mouse button to roll die", 450, 100);
+  text("Release mouse button to roll again", 450, 150);
+  textSize(40);
   //pulls a random number from the array to simulate a die roll
   text(Dice[int (random(6))], width/2, height/2);
+}
+//when left mouse button is pressed, stops the draw command
+void mousePressed() {
+  noLoop();
+}
+//when left mouse button is released, starts the draw command and loops it continously
+void mouseReleased() {
+  textSize(40);
+  redraw();
+  loop();
 }
